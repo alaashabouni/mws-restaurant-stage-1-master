@@ -4,6 +4,8 @@ let restaurants,
 var newMap
 var markers = []
 
+
+
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
@@ -160,6 +162,7 @@ createRestaurantHTML = (restaurant) => {
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
+  image.setAttribute("alt", restaurant.name);
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 
@@ -209,3 +212,12 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 } */
+
+//register service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+  .register('js/sw.js')
+  .catch(function(err) {
+    console.log(err);
+  });
+}

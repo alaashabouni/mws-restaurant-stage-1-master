@@ -8,7 +8,7 @@ const cacheFiles = [
   'js/dbhelper.js',
   'js/main.js',
   '/js/restaurant_info.js',
-  '/data/restaurant.json',
+  '/data/restaurants.json',
   '/img/1.jpg',
   '/img/2.jpg',
   '/img/3.jpg',
@@ -41,7 +41,7 @@ self.addEventListener('fetch', function(e) {
         return fetch(e.request)
         .then(function(response) {
           const clonedResponse = response.clone();
-          caches.open('v1').then(fucntion(cache) {
+          caches.open('v1').then(function(cache) {
             cache.put(e.request, clonedResponse);
           })
           return response;
